@@ -1,6 +1,5 @@
 package basicgrammer
 
-
 /**
  * Created by BarackBao on 2017/11/27.
  */
@@ -139,10 +138,136 @@ fun getStringLength2(obj: Any): Int? {
 }
 
 
+/**
+ * 使用for循环
+ */
+fun forTest() {
+    //listOf只能返回只读的集合，而且需要直接传入参数初始化
+    val items = listOf("China", "America", "Japan")
+    for (item in items) {
+        println(item)
+    }
+    //或者
+    for (index in items.indices) {
+        println("the $index is ${items[index]}")
+    }
+}
+
+/**
+ * 使用while循环
+ */
+fun whileTest() {
+    val items = listOf("China", "America", "Japan")
+    var index: Int = 0
+    while (index < items.size) {
+        println("the $index is ${items[index]}")
+        index++
+    }
+}
+
+
+/**
+ * 使用when表达式
+ * 比switch好用多了woc
+ */
+fun whenTest(obj: Any): String =
+        when (obj) {
+            1 -> "One"
+            "Barack" -> "Bao"
+            is Long -> "Long"
+            !is String -> "Not is a String"
+            else -> "Unknown"
+        }
+
+
+/**
+ * 使用区间(Range)
+ */
+//使用in判断一个数字是否在一个区间内
+fun rangeTest() {
+    val a = 9
+    val b = 10
+    if (b in 1..a + 1) {
+        println("fits in the range")
+    }
+}
+
+//判断一个数字是否在区间外
+fun rangeTest1() {
+    val list = listOf("a", "b", "c")
+    if (-1 !in 0..list.lastIndex) {
+        println("-1 is out of range")
+    }
+    //输出一下list.indices
+    println(list.indices)
+    //list.indices就是一个IntRange，指集合有效索引构成的一个range
+    if (list.size !in list.indices) {
+        println("list size is out of list valid indices range too")
+    }
+}
+
+//区间迭代
+fun rangeTest2() {
+    for (x in 1..5) {
+        print(x)
+    }
+    println()
+}
+
+//数列迭代
+fun rangeTest3() {
+    for (x in 1..10 step 2) {
+        print(x)
+    }
+    println()
+    for (x in 9 downTo 0 step 3) {
+        print(x)
+    }
+}
+
+/**
+ * 使用集合
+ */
+//遍历集合
+fun listTest() {
+    val items = listOf("China", "America", "Japan")
+    for (item in items) {
+        println(item)
+    }
+
+    //使用in运算符来判断集合中是否包含某实例
+    when {
+        "America" in items -> println("contain too")
+    //或者
+        "China" in items -> println("contain")
+    }
+}
+
+
+//使用lambda表达式来过滤(filter)和映射(map)集合
+fun lambdaListTest() {
+    val items = listOf("China", "America", "Japan")
+    items.filter { it.startsWith("i") }
+            .sortedBy { it }
+            .map { it.toUpperCase() }
+            .forEach { println(it) }
+}
+
+
 fun main(args: Array<String>) {
 //    println(sum(2, 3))
 //    println(sum1(2, 3))
 //    sum2(2, 3)
 //    println(s2)
 //    println(maxOf(2,4))
+//    forTest()
+//    whileTest()
+//    println(whenTest("Barack"))
+//    println(whenTest(2))
+//    rangeTest()
+//    rangeTest1()
+//    rangeTest2()
+//    rangeTest3()
+//    listTest()
+    lambdaListTest()
 }
