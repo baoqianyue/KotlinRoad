@@ -32,7 +32,7 @@ fun DatatypeCastTest() {
  * 下面列举一下(只用于Int和Long类型)
  */
 
-fun BitOperationDemo(){
+fun BitOperationDemo() {
     val a = 5 shl 2 //有符号左移(<<)
     val b = 5 shr 2 //有符号右移(>>)
     val c = 5 ushr 2 //无符号右移(>>>)
@@ -41,7 +41,20 @@ fun BitOperationDemo(){
     val f = 5 xor 3 //位异或
 }
 
+/**
+ * 字符
+ */
+
+//字符用Char类型表示，但是不能直接当作数字
+//可以显式的将字符转换成数字
+fun charCastToSum(ch: Char): Int {
+    if (ch !in '0'..'9') {
+        throw IllegalArgumentException("Out of range")
+    }
+    return ch.toInt() - '0'.toInt()
+}
+
 
 fun main(args: Array<String>) {
-
+    println(charCastToSum('5'))
 }
