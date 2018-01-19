@@ -12,7 +12,7 @@ val oneMillion = 1_000_000
 
 /**
  * 数据类型的显示转换
- * 较小的数据类型不能隐式转换为较大的数据类型，但是可以显示拓宽
+ * 较小的数据类型不能隐式转换为较大的数据类型(与java不同，java中int可以隐式转换为long类型)，但是可以显示拓宽
  */
 
 //测试一下较小数据类型到较大数据类型的转换
@@ -55,6 +55,19 @@ fun charCastToSum(ch: Char): Int {
 }
 
 
+/**
+ * 数组类型
+ */
+//使用库函数arrayOf()创建一个数组
+fun arrayTypeTest():Array<String?>{
+//    return arrayOf("bao","qian","yue")
+    //库函数arrayOfNulls可以创建一个指定类型和大小的数组
+    return arrayOfNulls<String?>(2)
+}
+
+//
+
 fun main(args: Array<String>) {
-    println(charCastToSum('5'))
+//    println(charCastToSum('5')
+
 }

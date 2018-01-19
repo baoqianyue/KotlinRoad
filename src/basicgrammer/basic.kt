@@ -51,6 +51,7 @@ val s2 = "${s1.replace("is", "was")},but now is $a1"
 /**
  * 使用条件表达式
  */
+
 fun maxOf(a: Int, b: Int): Int {
     if (a > b) {
         return a
@@ -109,7 +110,7 @@ fun print1(arg1: String, arg2: String) {
  * 使用类型检测和自动类型转换
  */
 
-//is运算符可以检测一个变量是否为某类型的一个实例
+//is运算符可以检测一个变量是否为某类型的一个实例,类似于java中的instanceof()
 // 如果一个不可变的局部变量或属性已经判断出为某属性，那么检测后的分支中可以直接当做该类型使用，无需再显示转换
 
 fun getStringLength(obj: Any): Int? {
@@ -179,6 +180,15 @@ fun whenTest(obj: Any): String =
             else -> "Unknown"
         }
 
+fun whenTest1(obj: Any): String? {
+    when (obj) {
+        1 -> "barack";
+        2 -> "bao";
+        else -> "Unknown"
+    }
+    return null
+}
+
 
 /**
  * 使用区间(Range)
@@ -199,6 +209,7 @@ fun rangeTest1() {
         println("-1 is out of range")
     }
     //输出一下list.indices
+    println("list.indices:" + list.indices)
     println(list.indices)
     //list.indices就是一个IntRange，指集合有效索引构成的一个range
     if (list.size !in list.indices) {
@@ -216,10 +227,12 @@ fun rangeTest2() {
 
 //数列迭代
 fun rangeTest3() {
+    //间隔2进行数列遍历
     for (x in 1..10 step 2) {
         print(x)
     }
     println()
+    //从后往前间隔3遍历数列
     for (x in 9 downTo 0 step 3) {
         print(x)
     }
@@ -246,7 +259,7 @@ fun listTest() {
 
 //使用lambda表达式来过滤(filter)和映射(map)集合
 fun lambdaListTest() {
-    val items = listOf("China", "America", "Japan")
+    val items = listOf("China", "America", "Japan","iambarackBao")
     items.filter { it.startsWith("i") }
             .sortedBy { it }
             .map { it.toUpperCase() }
