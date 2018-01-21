@@ -10,7 +10,7 @@ package basicgrammer
  * 带有两个Int参数，返回值为Int
  */
 
-fun sum(a: Int, b: Int): Int {
+private fun sum(a: Int, b: Int): Int {
     return a + b
 }
 
