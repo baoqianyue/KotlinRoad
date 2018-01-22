@@ -1,7 +1,5 @@
 package classandobject
 
-import javax.naming.Context
-
 
 /**
  * kotlin中使用class关键字声明类
@@ -93,7 +91,7 @@ open class Base constructor(a: Int) {
 }
 
 //继承使用:
-class CustomClass(a: Int) : Base(a){
+class CustomClass(a: Int) : Base(a) {
 
 }
 
@@ -105,9 +103,9 @@ open class View {
 }
 
 class MyView : View {
-    constructor(st:String):super(st)
+    constructor(st: String) : super(st)
 
-    constructor(st:String,num:Int):super(st,num)
+    constructor(st: String, num: Int) : super(st, num)
 }
 
 
@@ -117,31 +115,102 @@ class MyView : View {
  */
 //只有在类声明时加上open关键字，类中的成员才有机会被覆盖
 //一个final类中，开放成员是禁止的
-open class Base1{
+open class Base1 {
     //只有加上了open关键字修饰的成员才有资格被覆盖
-    open fun f(){}
-    fun nf(){}
+    open fun f() {}
+
+    fun nf() {}
 }
 
 class CustomClass1 : Base1() {
     //这里必须显示加上override关键字表示被覆盖，否则编译器会报错
-     override fun f() {
+    override fun f() {
         println("this function is overrided")
     }
     //因为基类中nf()并没有加open修饰符，所以不可以被覆盖，这里会报错
     //override fun nf(){}
 }
 
+/**
+ * 成员方法
+ * 首先定义一个类，然后定义成员方法
+ * 然后在main函数中调用成员方法
+ */
+class PersonB(var name: String, var age: Int) {
+    fun ReadBook(bookname: String) {
+        //这里是该方法的具体实现
+        println("The person is reading $bookname")
+    }
+
+    fun Coding(type: String) {
+        //这里是该方法的具体实现
+        println("The person coding with $type")
+    }
+}
 
 
+fun main(args: Array<String>) {
+    val Barack = PersonB("BarackBao", 20)
+    Barack.ReadBook("The OpenGL Cook Book")
+    Barack.Coding("Kotlin")
+}
 
 
+/**
+ * 类中定义成员属性
+ * 还有他们的GetterSetter方法
+ */
+
+class A {
+    var b = 0 //kotlin默认在定义变量之后就自动生成了get，set方法
+}
 
 
+//但是，如果想要在get，set方法中添加其他内容时，就需要对get，set方法斤进行重写
+
+class A1 {
+    var b = 0
+        get() {
+            println("override get")
+            return field //这里的field就代表b，需要注意的是，field只能在get，set方法中调用到
+        }
+        set(value) {
+            field = value //使用field指代b
+            println("override set")
+        }
+}
 
 
+/**
+ * lateinit关键字和by lazy
+ */
 
+//我们在定义成员属性时有时不会知道它的初始值是什么，但是也不能所有的东西都初始化为空
+//所以kotlin加入了延时初始化的机制，告诉编译器，我们会在之后妥善处理这些变量
 
+class B
+
+class A2 {
+    val a = 0
+    lateinit var str: String
+    lateinit var b: B //对于var定义的变量可以使用lateinit关键字
+    val e: B by lazy {
+        //对于val定义的量可以使用by lazy的方式告知编译器
+        println("init B")
+        B()
+    }
+}
+
+/**
+ * 总结一下属性
+ * 如果在构造方法参数中val或var修饰的就是类属性，如果参数前面没有var或val，就代表是普通的构造函数的参数
+ * 类内部也可以定义属性，而且有延时初始化机制
+ * 下面看一个例子
+ */
+
+class Test constructor(var aField: String, nField: String) { //这里aField是类属性
+    lateinit var bField: String //这里属于在类内部定义属性
+}
 
 
 
