@@ -1,7 +1,5 @@
 package classandobject
 
-import javax.naming.Context
-
 
 /**
  * kotlin中使用class关键字声明类
@@ -93,7 +91,7 @@ open class Base constructor(a: Int) {
 }
 
 //继承使用:
-class CustomClass(a: Int) : Base(a){
+class CustomClass(a: Int) : Base(a) {
 
 }
 
@@ -105,9 +103,9 @@ open class View {
 }
 
 class MyView : View {
-    constructor(st:String):super(st)
+    constructor(st: String) : super(st)
 
-    constructor(st:String,num:Int):super(st,num)
+    constructor(st: String, num: Int) : super(st, num)
 }
 
 
@@ -117,23 +115,45 @@ class MyView : View {
  */
 //只有在类声明时加上open关键字，类中的成员才有机会被覆盖
 //一个final类中，开放成员是禁止的
-open class Base1{
+open class Base1 {
     //只有加上了open关键字修饰的成员才有资格被覆盖
-    open fun f(){}
-    fun nf(){}
+    open fun f() {}
+
+    fun nf() {}
 }
 
 class CustomClass1 : Base1() {
     //这里必须显示加上override关键字表示被覆盖，否则编译器会报错
-     override fun f() {
+    override fun f() {
         println("this function is overrided")
     }
     //因为基类中nf()并没有加open修饰符，所以不可以被覆盖，这里会报错
     //override fun nf(){}
 }
 
+/**
+ * 成员方法
+ * 首先定义一个类，然后定义成员方法
+ * 然后在main函数中调用成员方法
+ */
+class PersonB(var name: String, var age: Int) {
+    fun ReadBook(bookname: String) {
+        //这里是该方法的具体实现
+        println("The person is reading $bookname")
+    }
+
+    fun Coding(type: String) {
+        //这里是该方法的具体实现
+        println("The person coding with $type")
+    }
+}
 
 
+fun main(args: Array<String>) {
+    val Barack = PersonB("BarackBao",20)
+    Barack.ReadBook("The OpenGL Cook Book")
+    Barack.Coding("Kotlin")
+}
 
 
 
