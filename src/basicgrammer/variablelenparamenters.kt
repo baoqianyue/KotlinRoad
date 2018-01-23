@@ -18,7 +18,7 @@ fun main(args: Array<String>) {
     test(int = 1, double = 1.0, string = "Barack")
 //    test1(1,2,34,"Barack")//这种情况下就会报错，这是因为编译器并不知道你的变长参数的具体个数
     //因而无法做出正确的识别，这种情况在java中是没有办法解决的，但是在kotlin中就可以使用具名参数来解决
-    test1(1,4,5,string = "Barack") //使用具名参数给对应的参数传参
+    test1(1, 4, 5, string = "Barack") //使用具名参数给对应的参数传参
 }
 
 
@@ -30,7 +30,7 @@ fun main(args: Array<String>) {
  */
 
 //我们先来定义一个普遍的变长参数情况，定义变长参数时需要在参数前面加上varage关键字
-fun test1(vararg ints:Int,string :String){
+fun test1(vararg ints: Int, string: String) {
     //遍历一下这个ints参数
     ints.forEach(::println)
     println(string)
