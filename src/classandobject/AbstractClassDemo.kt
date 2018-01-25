@@ -50,16 +50,23 @@ abstract class AbstractClassDemo1 {
 interface TestInter1 {
     var i: Int //这里虽然没有报错，但是这里的仍然没有具体的含义，虽然这里给它设置了默认类型Int型
     //但是当一个新的具体类实现该接口时，仍需要对这个变量进行重新实现，这也是接口与抽象类不同的地方
-    //在kotlin的接口中可以写一个默认方法
+    //在kotlin的接口中可以写一个默认方法,这样具体类实现该接口时就不需要实现这个方法了
     fun hello() {
         println(i)
     }
 
+    //如果在接口中定义了一个方法没有函数体，就表示定义了一种协议，在子类中需要对这个方法进行具体实现
+    fun hello1()
+
 }
 
-
 //下面我们来使用一个新的类来实现一下接口
-class TestInter2(override var i: Int) : TestInter1 {//这里需要对接口中的变量重写，给他设置具体的意义
+//这里我们需要对接口中的变量和抽象方法进行重写，使用ide提供的方法即可
+class TestInter2(override var i: Int) : TestInter1 {
+    //这里需要对接口中的变量重写，给他设置具体的意义
+    override fun hello1() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 }
 
