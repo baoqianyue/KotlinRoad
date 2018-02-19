@@ -1,7 +1,5 @@
 package classandobject
 
-import basicgrammer.sout
-
 
 /**
  * kotlin中的接口可以看成是一种约定
