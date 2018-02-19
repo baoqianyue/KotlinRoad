@@ -16,7 +16,7 @@ interface InstallDetials {
 }
 
 
-object MusicPlayer : Player(true), InstallDetials {//object中也可以继承和实现抽象类和接口
+object ObjectDemoMusicPlayer : Player(true), InstallDetials {//object中也可以继承和实现抽象类和接口
 
     override fun install() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
