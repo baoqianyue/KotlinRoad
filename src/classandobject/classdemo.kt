@@ -1,5 +1,7 @@
 package classandobject
 
+import org.omg.CORBA.StringHolder
+
 
 /**
  * kotlin中使用class关键字声明类
@@ -167,7 +169,7 @@ class A {
 }
 
 
-//但是，如果想要在get，set方法中添加其他内容时，就需要对get，set方法斤进行重写
+//但是，如果想要在get，set方法中添加其他内容时，就需要对get，set方法进行重写
 
 class A1 {
     var b = 0
@@ -180,6 +182,7 @@ class A1 {
             println("override set")
         }
 }
+
 
 
 /**

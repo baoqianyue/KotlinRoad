@@ -41,6 +41,7 @@ class Manager : Driver, Writer {
  * 下面我们再定义一个资深经理类来描述一下接口代理
  */
 class SeniorManager(val driver: Driver, val writer: Writer) : Driver, Writer {
+
     override fun write() {
         driver.drive()
     }
@@ -53,7 +54,7 @@ class SeniorManager(val driver: Driver, val writer: Writer) : Driver, Writer {
 
 //这里这种写法表示该SeniorManager类具有接口的属性并且重写了接口的方法，直接让属性变量调用对应的方法
 //在kotlin中可以使用接口代理来简化这种写法
-class SeniorManager1(val driver: Driver, val writer: Writer) :
+class SeniorManager1 constructor(val driver: Driver, val writer: Writer) :
         Driver by driver, Writer by writer
 //这里无须再重写接口中的方法，直接使用by关键字将重写方法的任务代理给了类的两个属性变量完成
 //具体实现效果与上面一致(会直接使用writer.write(),即xxer.xx())
