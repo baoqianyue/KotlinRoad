@@ -45,6 +45,19 @@ fun main(args: Array<String>) {
 }
 
 /**
+ * 输出
+ * Bao
+getValue: classandobject.Delegates@433c675d -> Barack1
+
+getValue: classandobject.Delegates@433c675d -> Barack2
+
+setValue: classandobject.Delegates@433c675d -> Barack2 = value of Barack2
+getValue: classandobject.Delegates@433c675d -> Barack2
+value of Barack2
+
+ */
+
+/**
  * 总结
  * 1.定义方法：
  * val/var <property name> : <Type> by <Expression>
