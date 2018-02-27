@@ -1,14 +1,12 @@
 package classandobject
 
-import org.omg.CORBA.StringHolder
-
 
 /**
  * kotlin中使用class关键字声明类
  * 类声明可以有类名、构造参数、和类体
  */
 class Person {
-    val age: Int = 18
+    var age: Int = 5
 }
 
 
@@ -33,7 +31,7 @@ class Person3(age: Int, isBoy: Boolean) {
 //主构造函数内不能含有任何的代码，如果想要初始化赋值，要在init代码块中进行
 class Person4(age: Int, isBoy: Boolean, name: String) {
     init {
-        val thisAge: Int = age;
+        val thisAge: Int = age
         val gender: Boolean = isBoy
         val name: String = name
         println("初始化..." + age)
@@ -99,12 +97,12 @@ class CustomClass(a: Int) : Base(a) {
 
 
 //如果类没有主构造函数，那么每个次级构造函数都需要使用super关键字初始化，或者委托给另一个次级构造函数
-open class View {
+open class view {
     constructor(st: String)
     constructor(st: String, num: Int)
 }
 
-class MyView : View {
+class MyView : view {
     constructor(st: String) : super(st)
 
     constructor(st: String, num: Int) : super(st, num)
@@ -182,7 +180,6 @@ class A1 {
             println("override set")
         }
 }
-
 
 
 /**
