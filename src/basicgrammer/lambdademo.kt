@@ -90,9 +90,9 @@ println("The End")
  * 我们举个例子
  */
 
-/*interface OnClickListener {
+interface OnClickListener {
     fun onClick(view: View)
-}*/
+}
 
 /**
  * 上面那个接口中只有一个函数，在kotlin中只含有一个函数的Interface可以替换成一个函数，像下面一样
