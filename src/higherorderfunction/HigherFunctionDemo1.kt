@@ -3,6 +3,10 @@ package higherorderfunction
 fun main(args: Array<String>) {
     val list: List<Int> = listOf(3, 4, 5, 12, 1)
 
+    /**
+     * forEach
+     */
+
     //现在我们要将这个list映射到一个新的list中
     val newList = ArrayList<Int>()
 
@@ -13,7 +17,11 @@ fun main(args: Array<String>) {
     }
 
     //输出一下:
-    newList.forEach(::println)
+//    newList.forEach(::println)
+
+    /**
+     * map
+     */
 
     //下面使用一个全新的函数map
     val newList1 = list.map {
@@ -27,7 +35,34 @@ fun main(args: Array<String>) {
 
     val newList3 = list.map(Int::toDouble)
 
+//    newList1.forEach(::println)
 
-    newList1.forEach(::println)
+    /**
+     * flatMap
+     * 可以将多个list压成一个大的list
+     */
+    val mutiplyList = listOf(
+            1..20,
+            2..7,
+            100..333
+    )
+
+    val flatList = mutiplyList.flatMap {
+        //这个it代表mutiplyList中的每个IntRange
+        it.map {
+            "No.$it"//这个it是上一层IntRange经过map后的每个Int
+        }
+    }
+    //如果有很多层高阶函数嵌套，只使用it来指代元素，就不太清楚
+    //我们可以将每一层的lambda的参数写出来，这样就简单明了，下面的代码和上面代码效果一样
+    val flatList1 = mutiplyList.flatMap { intRange ->
+        intRange.map { i ->
+            "No.$i"
+        }
+    }
+
+    flatList.forEach(::println)
+
+    flatList1.forEach(::println)
 
 }
