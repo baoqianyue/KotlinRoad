@@ -61,8 +61,19 @@ fun main(args: Array<String>) {
         }
     }
 
-    flatList.forEach(::println)
+    val flatList3 = mutiplyList.flatMap { it }
 
-    flatList1.forEach(::println)
+//    flatList.forEach(::println)
+
+//    flatList1.forEach(::println)
+
+    /**
+     * reduce
+     * 可以将集合累积做求和求阶乘等运算
+     */
+    println(flatList3.reduce { acc, s -> acc + s }) //将上面的flatmap进行求和运算
+    //查看了reduce的定义，发现参数是两个泛型参数，第一个参数是accumulator是积累的意思，所以在遍历的时候每次保存结果
+    //然后进行叠加或者其他积累操作
+
 
 }
